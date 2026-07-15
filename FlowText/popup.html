@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            --bg: #F9F9FB;
+            --text-main: #37352F;
+            --accent: #2383E2;
+            --border: #E9E9E9;
+            --white: #FFFFFF;
+            --mono: 'SFMono-Regular', Consolas, monospace;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            font-family: var(--sans);
+            background-color: var(--bg);
+            color: var(--text-main);
+            width: 400px;
+            padding: 20px;
+            margin: 0;
+        }
+        .container { width: 100%; }
+        h1 { font-size: 18px; margin-bottom: 4px; font-weight: 600; }
+        .subtitle { font-size: 12px; color: #666; margin-bottom: 15px; }
+        label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 6px; color: #888; text-transform: uppercase; }
+        textarea {
+            width: 100%;
+            height: 120px; /* Default starting height */
+            min-height: 80px; /* Prevents it from getting too small to use */
+            max-height: 350px; /* Prevents it from pushing the UI off the screen */
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+            
+            /* THE FIX: Changed from 'none' to 'vertical' */
+            resize: vertical; 
+            
+            margin-bottom: 12px;
+            font-family: var(--sans);
+            line-height: 1.4;
+            display: block;
+        }
+
+        /* Optional: Add a subtle styling to the resize handle to make it more visible */
+        textarea::-webkit-resizer {
+            background-image: linear-gradient(135deg, transparent 50%, #888 50%, #888 70%, transparent 70%, transparent 80%, #888 80%);
+            background-size: 10px 10px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        select, button {
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        select { border: 1px solid var(--border); background: white; }
+        button { border: none; background: var(--accent); color: white; font-weight: 600; }
+        .output-preview {
+            width: 100%;
+            height: 150px;
+            border: 1px solid var(--border);
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: var(--mono);
+            font-size: 13px;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        #copyBtn { background: #000; margin-top: 10px; width: 100%; }
+        .hint { font-size: 10px; color: #aaa; margin-top: 4px; text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+            <img src="icon.png" style="width: 24px; height: 24px; border-radius: 4px;">
+            <h1>Social Formatter</h1>
+        </div>
+        <p class="subtitle">Mobile-optimized line breaks.</p>
+        
+        <label>Raw Post</label>
+        <textarea id="inputText" placeholder="Paste your text..."></textarea>
+        
+        <div class="controls">
+            <select id="modeSelect">
+                <option value="classic">Classic Mobile</option>
+                <option value="wave">The Wave</option>
+                <option value="diamond">The Diamond</option>
+                <option value="hourglass">The Hourglass</option>
+            </select>
+            <button id="formatBtn">Format Text</button>
+        </div>
+
+        <label>Preview</label>
+        <div id="outputPreview" class="output-preview"></div>
+        <div class="hint">Press <b>Enter</b> to format</div>
+        
+        <button id="copyBtn">Copy to Clipboard</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
