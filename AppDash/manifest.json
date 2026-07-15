@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "oZ Menu 1.2",
+  "version": "1.2",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
